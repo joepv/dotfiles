@@ -1,0 +1,18 @@
+[mgr]
+  prepend_keymap = [
+  # Jump to Home directory using `g` then `h`
+  { on = [ "g", "r" ], run = "cd ~/repos", desc = "Go repos" },
+  { on = [ "g", "n" ], run = "cd ~/.config/nvim", desc = "Go Neovim config" },
+]
+
+# [mgr]
+# prepend_keymap = [
+#   # Jump to Home directory using `g` then `h`
+#   { on = [ "g", "h" ], run = "cd ~", desc = "Go home" },
+#
+#   # Jump to Downloads using `g` then `d`
+#   { on = [ "g", "d" ], run = "cd ~/Downloads", desc = "Go downloads" },
+#
+#   # Jump to a custom projects folder using `g` then `p`
+#   { on = [ "g", "p" ], run = "cd ~/projects", desc = "Go projects" }
+# ]

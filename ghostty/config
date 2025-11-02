@@ -1,0 +1,28 @@
+#macos-non-native-fullscreen = true
+#window-padding-y = 10
+#macos-window-buttons        = visible
+#macos-icon = official
+
+macos-icon = custom
+macos-custom-icon = /Users/joepverhaeg/Pictures/Terminal.icns
+
+macos-option-as-alt = true
+macos-titlebar-proxy-icon = hidden
+quit-after-last-window-closed = true
+
+window-save-state = always
+window-padding-x = 5
+window-padding-balance = true
+
+font-family = "Hack Nerd Font Mono"
+font-size = 14
+font-thicken = true
+font-feature = -liga
+adjust-cell-height = 10 
+
+theme = "Atom One Dark"
+#background-opacity = 0.90
+#background-blur-radius = 50
+
+#custom-shader = ~/.config/ghostty/shaders/crt-shader.ghsl
+#custom-shader = ~/.config/ghostty/shaders/cursor_blaze.glsl
