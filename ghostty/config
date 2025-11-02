@@ -1,0 +1,27 @@
+window-padding-x = 5
+#window-padding-y = 10
+window-padding-balance = true
+
+#macos-icon = official
+macos-icon = custom
+macos-custom-icon = /Users/joepverhaeg/Pictures/Terminal.icns
+
+macos-option-as-alt = true
+window-save-state = always
+
+#font-family="JetBrains Mono"
+font-family="Hack"
+font-size=14
+#theme="Blue Matrix"
+#theme="Bluloco Dark"
+#theme="Alabaster"
+quit-after-last-window-closed=true
+
+background-opacity = 0.90
+background-blur-radius = 50
+font-thicken=true
+font-thicken-strength=1
+
+#adjust-cell-height = 5
+#custom-shader = ~/.config/ghostty/shaders/crt-shader.ghsl
+#custom-shader = ~/.config/ghostty/shaders/cursor_blaze.glsl
