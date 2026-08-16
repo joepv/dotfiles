@@ -24,6 +24,10 @@ vim.keymap.set("n", "<C-y>", "5<C-y>", { noremap = true, silent = true })
 
 vim.keymap.set("n", "<C-q>", "5<C-y>", { noremap = true, silent = true })
 
+-- Change without yanking
+vim.keymap.set({ "n", "v" }, "c", '"_c', { noremap = true })
+vim.keymap.set({ "n", "v" }, "C", '"_C', { noremap = true })
+
 -- Better paste behavior
 vim.keymap.set("x", "<leader>p", '"_dP', { desc = "Paste without yanking" })
 
