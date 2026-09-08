@@ -135,6 +135,10 @@ vim.api.nvim_create_autocmd("LspAttach", {
 		-- LSP keymaps (bound to the active buffer)
 		local opts = { buffer = args.buf, silent = true }
 
+        vim.keymap.set("i", "<C-Space>", function()
+            vim.lsp.completion.get()
+        end, { desc = "LSP completion" })
+
 		vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts)
 		vim.keymap.set("n", "gr", vim.lsp.buf.references, opts)
 		vim.keymap.set("n", "K", vim.lsp.buf.hover, opts)

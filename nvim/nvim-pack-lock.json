@@ -36,6 +36,14 @@
       "rev": "525b27e98de7cd2a6012d99f45b4fc10676e00e5",
       "src": "https://github.com/nvim-mini/mini.tabline"
     },
+    "neo-tree.nvim": {
+      "rev": "b01ee1769144c4491ea44bc329cb84040e9793be",
+      "src": "https://github.com/nvim-neo-tree/neo-tree.nvim"
+    },
+    "nui.nvim": {
+      "rev": "de740991c12411b663994b2860f1a4fd0937c130",
+      "src": "https://github.com/MunifTanjim/nui.nvim"
+    },
     "nvim-autopairs": {
       "rev": "7b9923abad60b903ece7c52940e1321d39eccc79",
       "src": "https://github.com/windwp/nvim-autopairs"

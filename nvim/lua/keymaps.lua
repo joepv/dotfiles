@@ -152,7 +152,7 @@ vim.keymap.set("n", "<leader>gd", "<cmd>DiffviewOpen<cr>", { desc = "Git Diff Op
 vim.keymap.set("n", "<leader>gh", "<cmd>DiffviewFileHistory %<cr>", { desc = "Git File History" })
 
 -- Map <leader>1..9 to switch to buffers 1 through 9
-for i = 1, 9 do
+for i = 1, 20 do
 	vim.keymap.set("n", "<leader>" .. i, "<Cmd>b " .. i .. "<CR>", { desc = "Ga naar buffer " .. i })
 end
 

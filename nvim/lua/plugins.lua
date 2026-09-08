@@ -21,8 +21,8 @@ vim.pack.add({
 })
 
 -- Setup OneDark theme
-require("onedark").setup({ style = "deep" })
-require("onedark").load()
+-- require("onedark").setup({ style = "deep" })
+-- require("onedark").load()
 
 -- Setup nvim-web-devicons
 require("nvim-web-devicons").setup({})
@@ -48,7 +48,7 @@ require("conform").setup({
         lua = { "stylua" },
     },
     format_on_save = {
-        timeout_ms = 1000,
+        timeout_ms = 5000,
         lsp_format = "fallback",
     },
 })
