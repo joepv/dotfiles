@@ -1,4 +1,30 @@
 -- ============================================================================
+-- COLORSCHEME & TABLINE HIGHLIGHTS
+-- ============================================================================
+
+local function setup_tabline_colors()
+    -- Koppel mini.tabline aan de standaard Vim/Neovim TabLine highlight groups
+    -- Hiermee liften de kleuren direct mee met ALLES wat je colorscheme (zoals OneDark) instelt.
+    vim.api.nvim_set_hl(0, "MiniTablineCurrent", { link = "TabLineSel" }) -- Actieve tab
+    vim.api.nvim_set_hl(0, "MiniTablineVisible", { link = "TabLine" }) -- Zichtbare tab (in split)
+    vim.api.nvim_set_hl(0, "MiniTablineHidden", { link = "TabLineFill" }) -- Inactieve achtergrond tab
+
+    -- Gewijzigde bestanden (met opslaan-indicator)
+    vim.api.nvim_set_hl(0, "MiniTablineModifiedCurrent", { link = "TabLineSel" })
+    vim.api.nvim_set_hl(0, "MiniTablineModifiedHidden", { link = "TabLineFill" })
+end
+
+-- Zorg dat de kleuren herberekend worden elke keer als je van colorscheme wisselt
+vim.api.nvim_create_autocmd("ColorScheme", {
+    callback = setup_tabline_colors,
+})
+
+-- Laad het thema en stel de tabline in
+require("onedark").setup({ style = "deep" })
+require("onedark").load()
+setup_tabline_colors()
+
+-- ============================================================================
 -- COLORSCHEME & TRANSPARENCY CONFIGURATION
 -- ============================================================================
 
