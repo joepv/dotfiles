@@ -2,7 +2,7 @@
 -- KEYMAPS CONFIGURATION
 -- ============================================================================
 
-vim.g.mapleader = " " -- Set leader key to space
+vim.g.mapleader = " "      -- Set leader key to space
 vim.g.maplocalleader = " " -- Set local leader key (NEW)
 
 -- Normal mode mappings
@@ -21,8 +21,6 @@ vim.keymap.set("n", "<leader>h", ":nohlsearch<CR>", { desc = "Clear search highl
 --
 vim.keymap.set("n", "<C-e>", "5<C-e>", { noremap = true, silent = true })
 vim.keymap.set("n", "<C-y>", "5<C-y>", { noremap = true, silent = true })
-
-vim.keymap.set("n", "<C-q>", "5<C-y>", { noremap = true, silent = true })
 
 -- Change without yanking
 -- vim.keymap.set({ "n", "v" }, "c", '"_c', { noremap = true })
@@ -65,7 +63,6 @@ vim.keymap.set("v", "<", "<gv", { desc = "Indent left and reselect" })
 vim.keymap.set("v", ">", ">gv", { desc = "Indent right and reselect" })
 
 -- Quick file navigation
-vim.keymap.set("n", "<leader>e", "<Cmd>Neotree toggle<CR>")
 vim.keymap.set("n", "<leader>ff", ":find ", { desc = "Find file" })
 
 -- Better J behavior
@@ -76,26 +73,26 @@ vim.keymap.set("n", "<leader>rc", ":e $MYVIMRC<CR>", { desc = "Edit config" })
 
 -- Persistance Session Management
 vim.keymap.set("n", "<leader>qs", function()
-	require("persistence").load()
+    require("persistence").load()
 end)
 
 vim.keymap.set("n", "<leader>qS", function()
-	require("persistence").select()
+    require("persistence").select()
 end)
 
 vim.keymap.set("n", "<leader>ql", function()
-	require("persistence").load({ last = true })
+    require("persistence").load({ last = true })
 end)
 
 vim.keymap.set("n", "<leader>qd", function()
-	require("persistence").stop()
+    require("persistence").stop()
 end)
 
 -- Copy Full File-Path
 vim.keymap.set("n", "<leader>pa", function()
-	local path = vim.fn.expand("%:p")
-	vim.fn.setreg("+", path)
-	print("file:", path)
+    local path = vim.fn.expand("%:p")
+    vim.fn.setreg("+", path)
+    print("file:", path)
 end)
 
 -- Alternative navigation (more intuitive)
@@ -118,26 +115,26 @@ vim.keymap.set("n", "<leader>bo", ":%bd|e#|bd#<CR>", { desc = "Close all buffers
 
 -- Rename current file
 vim.keymap.set("n", "<leader>rr", function()
-	local old_name = vim.fn.expand("%")
-	local new_name = vim.fn.input("New file name: ", old_name)
-	if new_name ~= "" and new_name ~= old_name then
-		vim.cmd("saveas " .. new_name)
-		vim.fn.delete(old_name)
-		print("File renamed to: " .. new_name)
-	end
+    local old_name = vim.fn.expand("%")
+    local new_name = vim.fn.input("New file name: ", old_name)
+    if new_name ~= "" and new_name ~= old_name then
+        vim.cmd("saveas " .. new_name)
+        vim.fn.delete(old_name)
+        print("File renamed to: " .. new_name)
+    end
 end, { desc = "Rename current file" })
 
 -- Copy file path variations
 vim.keymap.set("n", "<leader>pf", function()
-	local path = vim.fn.expand("%:p")
-	vim.fn.setreg("+", path)
-	print("Full path: " .. path)
+    local path = vim.fn.expand("%:p")
+    vim.fn.setreg("+", path)
+    print("Full path: " .. path)
 end, { desc = "Copy full file path" })
 
 vim.keymap.set("n", "<leader>pr", function()
-	local path = vim.fn.expand("%")
-	vim.fn.setreg("+", path)
-	print("Relative path: " .. path)
+    local path = vim.fn.expand("%")
+    vim.fn.setreg("+", path)
+    print("Relative path: " .. path)
 end, { desc = "Copy relative file path" })
 
 vim.keymap.set({ "n", "i", "v" }, "<D-s>", "<cmd>w<cr><esc>", { desc = "Save file" })
@@ -152,8 +149,15 @@ vim.keymap.set("n", "<leader>gd", "<cmd>DiffviewOpen<cr>", { desc = "Git Diff Op
 vim.keymap.set("n", "<leader>gh", "<cmd>DiffviewFileHistory %<cr>", { desc = "Git File History" })
 
 -- Map <leader>1..9 to switch to buffers 1 through 9
-for i = 1, 20 do
-	vim.keymap.set("n", "<leader>" .. i, "<Cmd>b " .. i .. "<CR>", { desc = "Ga naar buffer " .. i })
+-- for i = 1, 9 do
+-- 	vim.keymap.set("n", "<leader>" .. i, "<Cmd>b " .. i .. "<CR>", { desc = "Ga naar buffer " .. i })
+-- end
+
+-- Use the built-in bufferline go-to function (jumps to position on the screen)
+for i = 1, 9 do
+    vim.keymap.set("n", "<leader>" .. i, function()
+        require("bufferline").go_to(i, true)
+    end, { desc = "Ga naar tab positie " .. i })
 end
 
 -- Tab & Buffer management (see tabs.lua)
@@ -167,79 +171,79 @@ vim.keymap.set("n", "<leader>bd", fn.smart_close_buffer, { desc = "Smart close b
 -- Keymaps for selection of functions and classes
 -- You can use the capture groups defined in `textobjects.scm`
 vim.keymap.set({ "x", "o" }, "am", function()
-	require("nvim-treesitter-textobjects.select").select_textobject("@function.outer", "textobjects")
+    require("nvim-treesitter-textobjects.select").select_textobject("@function.outer", "textobjects")
 end)
 vim.keymap.set({ "x", "o" }, "im", function()
-	require("nvim-treesitter-textobjects.select").select_textobject("@function.inner", "textobjects")
+    require("nvim-treesitter-textobjects.select").select_textobject("@function.inner", "textobjects")
 end)
 vim.keymap.set({ "x", "o" }, "ac", function()
-	require("nvim-treesitter-textobjects.select").select_textobject("@class.outer", "textobjects")
+    require("nvim-treesitter-textobjects.select").select_textobject("@class.outer", "textobjects")
 end)
 vim.keymap.set({ "x", "o" }, "ic", function()
-	require("nvim-treesitter-textobjects.select").select_textobject("@class.inner", "textobjects")
+    require("nvim-treesitter-textobjects.select").select_textobject("@class.inner", "textobjects")
 end)
 -- You can also use captures from other query groups like `locals.scm`
 vim.keymap.set({ "x", "o" }, "as", function()
-	require("nvim-treesitter-textobjects.select").select_textobject("@local.scope", "locals")
+    require("nvim-treesitter-textobjects.select").select_textobject("@local.scope", "locals")
 end)
 
 -- Keymaps for jumping functions and classes
 vim.keymap.set({ "n", "x", "o" }, "]m", function()
-	require("nvim-treesitter-textobjects.move").goto_next_start("@function.outer", "textobjects")
+    require("nvim-treesitter-textobjects.move").goto_next_start("@function.outer", "textobjects")
 end)
 vim.keymap.set({ "n", "x", "o" }, "]]", function()
-	require("nvim-treesitter-textobjects.move").goto_next_start("@class.outer", "textobjects")
+    require("nvim-treesitter-textobjects.move").goto_next_start("@class.outer", "textobjects")
 end)
 -- You can also pass a list to group multiple queries.
 vim.keymap.set({ "n", "x", "o" }, "]o", function()
-	require("nvim-treesitter-textobjects.move").goto_next_start({ "@loop.inner", "@loop.outer" }, "textobjects")
+    require("nvim-treesitter-textobjects.move").goto_next_start({ "@loop.inner", "@loop.outer" }, "textobjects")
 end)
 -- You can also use captures from other query groups like `locals.scm` or `folds.scm`
 vim.keymap.set({ "n", "x", "o" }, "]s", function()
-	require("nvim-treesitter-textobjects.move").goto_next_start("@local.scope", "locals")
+    require("nvim-treesitter-textobjects.move").goto_next_start("@local.scope", "locals")
 end)
 vim.keymap.set({ "n", "x", "o" }, "]z", function()
-	require("nvim-treesitter-textobjects.move").goto_next_start("@fold", "folds")
+    require("nvim-treesitter-textobjects.move").goto_next_start("@fold", "folds")
 end)
 
 vim.keymap.set({ "n", "x", "o" }, "]M", function()
-	require("nvim-treesitter-textobjects.move").goto_next_end("@function.outer", "textobjects")
+    require("nvim-treesitter-textobjects.move").goto_next_end("@function.outer", "textobjects")
 end)
 vim.keymap.set({ "n", "x", "o" }, "][", function()
-	require("nvim-treesitter-textobjects.move").goto_next_end("@class.outer", "textobjects")
+    require("nvim-treesitter-textobjects.move").goto_next_end("@class.outer", "textobjects")
 end)
 
 vim.keymap.set({ "n", "x", "o" }, "[m", function()
-	require("nvim-treesitter-textobjects.move").goto_previous_start("@function.outer", "textobjects")
+    require("nvim-treesitter-textobjects.move").goto_previous_start("@function.outer", "textobjects")
 end)
 vim.keymap.set({ "n", "x", "o" }, "[[", function()
-	require("nvim-treesitter-textobjects.move").goto_previous_start("@class.outer", "textobjects")
+    require("nvim-treesitter-textobjects.move").goto_previous_start("@class.outer", "textobjects")
 end)
 
 vim.keymap.set({ "n", "x", "o" }, "[M", function()
-	require("nvim-treesitter-textobjects.move").goto_previous_end("@function.outer", "textobjects")
+    require("nvim-treesitter-textobjects.move").goto_previous_end("@function.outer", "textobjects")
 end)
 vim.keymap.set({ "n", "x", "o" }, "[]", function()
-	require("nvim-treesitter-textobjects.move").goto_previous_end("@class.outer", "textobjects")
+    require("nvim-treesitter-textobjects.move").goto_previous_end("@class.outer", "textobjects")
 end)
 
 -- Selecteer een heel if-blok (inclusief if/else en conditie)
 vim.keymap.set({ "x", "o" }, "ad", function()
-	require("nvim-treesitter-textobjects.select").select_textobject("@conditional.outer", "textobjects")
+    require("nvim-treesitter-textobjects.select").select_textobject("@conditional.outer", "textobjects")
 end)
 
 -- Selecteer alleen de binnenkant van het if-blok (de regels code binnen de accolades of indentatie)
 vim.keymap.set({ "x", "o" }, "id", function()
-	require("nvim-treesitter-textobjects.select").select_textobject("@conditional.inner", "textobjects")
+    require("nvim-treesitter-textobjects.select").select_textobject("@conditional.inner", "textobjects")
 end)
 
 -- Go to either the start or the end, whichever is closer.
 -- Use if you want more granular movements
 vim.keymap.set({ "n", "x", "o" }, "]d", function()
-	require("nvim-treesitter-textobjects.move").goto_next("@conditional.outer", "textobjects")
+    require("nvim-treesitter-textobjects.move").goto_next("@conditional.outer", "textobjects")
 end)
 vim.keymap.set({ "n", "x", "o" }, "[d", function()
-	require("nvim-treesitter-textobjects.move").goto_previous("@conditional.outer", "textobjects")
+    require("nvim-treesitter-textobjects.move").goto_previous("@conditional.outer", "textobjects")
 end)
 
 -- vim.keymap.set({ "n", "i", "v", "x" }, "<D-c>", '"+y', { desc = "MacOS copy" })

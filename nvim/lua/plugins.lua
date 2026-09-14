@@ -8,8 +8,8 @@ vim.pack.add({
     -- { src = "https://github.com/folke/flash.nvim" },
     { src = "https://github.com/junegunn/fzf" },
     { src = "https://github.com/junegunn/fzf.vim" },
-    { src = "https://github.com/nvim-mini/mini.icons" },
-    { src = "https://github.com/nvim-mini/mini.tabline" },
+    -- { src = "https://github.com/nvim-mini/mini.tabline" },
+    { src = "https://github.com/akinsho/bufferline.nvim" },
     { src = "https://github.com/nvim-mini/mini.ai" },
     { src = "https://github.com/nvim-treesitter/nvim-treesitter-textobjects" },
     { src = "https://github.com/lewis6991/gitsigns.nvim" },
@@ -18,11 +18,8 @@ vim.pack.add({
     { src = "https://github.com/meanderingprogrammer/render-markdown.nvim" },
     { src = "https://github.com/mofiqul/vscode.nvim" },
     { src = "https://github.com/navarasu/onedark.nvim" },
+    { src = "https://github.com/craftzdog/solarized-osaka.nvim" }
 })
-
--- Setup OneDark theme
--- require("onedark").setup({ style = "deep" })
--- require("onedark").load()
 
 -- Setup nvim-web-devicons
 require("nvim-web-devicons").setup({})
@@ -62,64 +59,61 @@ end, {})
 -- PLUGINS CONFIGURATION (Flash, Conform, etc.)
 -- ============================================================================
 
--- Setup flash.nvim
--- require("flash").setup({
--- 	-- modes = {
--- 	-- 	char = {
--- 	-- 		enabled = false, -- Zet de overname van f, t, F, T uit om crashes bij ct/cf te voorkomen
--- 	-- 	},
--- 	-- },
--- })
---
--- Flash keymaps & treesitter incremental selection
--- vim.keymap.set({ "n", "x", "o" }, "s", function()
--- 	require("flash").jump()
--- end, { desc = "Flash" })
---
--- vim.keymap.set({ "n", "o", "x" }, "S", function()
--- 	require("flash").treesitter()
--- end, { desc = "Flash Treesitter" })
---
--- vim.keymap.set("o", "r", function()
--- 	require("flash").remote()
--- end, { desc = "Remote Flash" })
---
--- vim.keymap.set({ "o", "x" }, "R", function()
--- 	require("flash").treesitter_search()
--- end, { desc = "Treesitter Search" })
---
--- vim.keymap.set("c", "<c-s>", function()
--- 	require("flash").toggle()
--- end, { desc = "Toggle Flash Search" })
---
--- vim.keymap.set({ "n", "o", "x" }, "<c-space>", function()
--- 	require("flash").treesitter({
--- 		actions = {
--- 			["<c-space>"] = "next",
--- 			["<BS>"] = "prev",
--- 		},
--- 	})
--- end, { desc = "Treesitter Incremental Selection" })
---
 -- Conform formatting keymap
 vim.keymap.set({ "n", "v" }, "<leader>f", function()
     require("conform").format({ async = true, lsp_fallback = true })
 end, { desc = "Format buffer" })
 
 -- Setup mini.icons
-require("mini.icons").setup({})
-
--- Setup mini.tabline
-require("mini.tabline").setup({
-    show_icons = true,
-    format = function(buf_id, label)
-        local default_label = require("mini.tabline").default_format(buf_id, label)
-        return default_label:sub(1, -2) .. ":" .. buf_id .. " "
-    end,
-})
+-- require("mini.icons").setup({})
 
 -- Setup mini.ai
 local ai = require("mini.ai")
+
+-- Setup bufferline
+require("bufferline").setup({
+    options = {
+        mode = "buffers",
+        diagnostics = "nvim_lsp",
+        custom_areas = {
+            right = function()
+                local result = {}
+                local seve = vim.diagnostic.severity
+                local error = #vim.diagnostic.get(0, { severity = seve.ERROR })
+                local warning = #vim.diagnostic.get(0, { severity = seve.WARN })
+                local info = #vim.diagnostic.get(0, { severity = seve.INFO })
+                local hint = #vim.diagnostic.get(0, { severity = seve.HINT })
+
+                if error ~= 0 then
+                    table.insert(result, { text = "  " .. error, link = "DiagnosticError" })
+                end
+
+                if warning ~= 0 then
+                    table.insert(result, { text = "  " .. warning, link = "DiagnosticWarn" })
+                end
+
+                if hint ~= 0 then
+                    table.insert(result, { text = "  " .. hint, link = "DiagnosticHint" })
+                end
+
+                if info ~= 0 then
+                    table.insert(result, { text = "  " .. info, link = "DiagnosticInfo" })
+                end
+                return result
+            end,
+        },
+        --separator_style = "slant", -- "slant" | "slope" | "thick" | "thin"
+        show_buffer_close_icons = false,
+        show_close_icon = false,
+        numbers = function(opts)
+            return string.format("%s", opts.raise(opts.ordinal))
+        end,
+        -- numbers = function(opts)
+        --     return string.format('%s', opts.raise(opts.id))
+        -- end,
+
+    },
+})
 
 ai.setup({
     n_lines = 500,
