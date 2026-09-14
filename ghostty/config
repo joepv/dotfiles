@@ -20,7 +20,7 @@ font-thicken = true
 font-feature = -liga
 adjust-cell-height = 10 
 
-theme = "Atom One Dark"
+theme = "solarized-osaka"
 #background-opacity = 0.90
 #background-blur-radius = 50
 
