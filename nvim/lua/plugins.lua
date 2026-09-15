@@ -8,7 +8,6 @@ vim.pack.add({
     -- { src = "https://github.com/folke/flash.nvim" },
     { src = "https://github.com/junegunn/fzf" },
     { src = "https://github.com/junegunn/fzf.vim" },
-    -- { src = "https://github.com/nvim-mini/mini.tabline" },
     { src = "https://github.com/akinsho/bufferline.nvim" },
     { src = "https://github.com/nvim-mini/mini.ai" },
     { src = "https://github.com/nvim-treesitter/nvim-treesitter-textobjects" },
@@ -63,9 +62,6 @@ end, {})
 vim.keymap.set({ "n", "v" }, "<leader>f", function()
     require("conform").format({ async = true, lsp_fallback = true })
 end, { desc = "Format buffer" })
-
--- Setup mini.icons
--- require("mini.icons").setup({})
 
 -- Setup mini.ai
 local ai = require("mini.ai")

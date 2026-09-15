@@ -1,0 +1,507 @@
+# Solarized Osaka for Yazi
+# Based on craftzdog/solarized-osaka.nvim
+
+[app]
+overall = { bg = "#00141a" }
+
+
+# ────────────────────────────────────────────────────────────
+# Manager
+# ────────────────────────────────────────────────────────────
+
+[mgr]
+
+cwd = { fg = "#adb8b8", bold = true }
+
+find_keyword = {
+    fg = "#00141a",
+    bg = "#b28600",
+    bold = true
+}
+
+find_position = {
+    fg = "#b28600",
+    bold = true
+}
+
+symlink_target = {
+    fg = "#6d72c5",
+    italic = true
+}
+
+marker_copied = {
+    fg = "#00141a",
+    bg = "#859900"
+}
+
+marker_cut = {
+    fg = "#00141a",
+    bg = "#dc312e"
+}
+
+marker_marked = {
+    fg = "#00141a",
+    bg = "#b28600"
+}
+
+marker_selected = {
+    fg = "#00141a",
+    bg = "#2aa298"
+}
+
+count_copied = {
+    fg = "#859900",
+    bold = true
+}
+
+count_cut = {
+    fg = "#dc312e",
+    bold = true
+}
+
+count_selected = {
+    fg = "#2aa298",
+    bold = true
+}
+
+border_symbol = "│"
+
+border_style = {
+    fg = "#073541"
+}
+
+
+# ────────────────────────────────────────────────────────────
+# Indicator
+# ────────────────────────────────────────────────────────────
+
+[indicator]
+
+parent = {
+    fg = "#586e74"
+}
+
+current = {
+    fg = "#2aa298"
+}
+
+preview = {
+    fg = "#6d72c5"
+}
+
+padding = {
+    open = "▐",
+    close = "▌"
+}
+
+
+# ────────────────────────────────────────────────────────────
+# Tabs
+# ────────────────────────────────────────────────────────────
+
+[tabs]
+
+active = {
+    fg = "#00141a",
+    bg = "#2aa298",
+    bold = true
+}
+
+inactive = {
+    fg = "#647a82",
+    bg = "#002d38"
+}
+
+sep_inner = {
+    open = "",
+    close = ""
+}
+
+sep_outer = {
+    open = "",
+    close = ""
+}
+
+
+# ────────────────────────────────────────────────────────────
+# Mode
+# ────────────────────────────────────────────────────────────
+
+[mode]
+
+normal_main = {
+    fg = "#00141a",
+    bg = "#2aa298",
+    bold = true
+}
+
+normal_alt = {
+    fg = "#9fabad",
+    bg = "#002d38"
+}
+
+select_main = {
+    fg = "#00141a",
+    bg = "#b28600",
+    bold = true
+}
+
+select_alt = {
+    fg = "#b28600",
+    bg = "#002d38"
+}
+
+unset_main = {
+    fg = "#00141a",
+    bg = "#dc312e",
+    bold = true
+}
+
+unset_alt = {
+    fg = "#dc312e",
+    bg = "#002d38"
+}
+
+
+# ────────────────────────────────────────────────────────────
+# Status
+# ────────────────────────────────────────────────────────────
+
+[status]
+
+overall = {
+    fg = "#9fabad",
+    bg = "#002d38"
+}
+
+sep_left = {
+    open = "",
+    close = ""
+}
+
+sep_right = {
+    open = "",
+    close = ""
+}
+
+perm_type = {
+    fg = "#6d72c5"
+}
+
+perm_read = {
+    fg = "#859900"
+}
+
+perm_write = {
+    fg = "#b28600"
+}
+
+perm_exec = {
+    fg = "#2aa298",
+    bold = true
+}
+
+perm_sep = {
+    fg = "#586e74"
+}
+
+progress_label = {
+    fg = "#adb8b8",
+    bold = true
+}
+
+progress_normal = {
+    fg = "#2aa298"
+}
+
+progress_error = {
+    fg = "#dc312e"
+}
+
+
+# ────────────────────────────────────────────────────────────
+# Which
+# ────────────────────────────────────────────────────────────
+
+[which]
+
+cols = 2
+
+mask = {
+    bg = "#00141a"
+}
+
+cand = {
+    fg = "#2aa298",
+    bold = true
+}
+
+rest = {
+    fg = "#9fabad"
+}
+
+desc = {
+    fg = "#647a82"
+}
+
+separator = "  →  "
+
+separator_style = {
+    fg = "#586e74"
+}
+
+border = {
+    fg = "#073541"
+}
+
+
+# ────────────────────────────────────────────────────────────
+# Confirm
+# ────────────────────────────────────────────────────────────
+
+[confirm]
+
+border = {
+    fg = "#2aa298"
+}
+
+title = {
+    fg = "#2aa298",
+    bold = true
+}
+
+body = {
+    fg = "#adb8b8"
+}
+
+list = {
+    fg = "#9fabad"
+}
+
+btn_yes = {
+    fg = "#00141a",
+    bg = "#859900",
+    bold = true
+}
+
+btn_no = {
+    fg = "#00141a",
+    bg = "#dc312e",
+    bold = true
+}
+
+btn_labels = ["Yes", "No"]
+
+
+# ────────────────────────────────────────────────────────────
+# Spot
+# ────────────────────────────────────────────────────────────
+
+[spot]
+
+border = {
+    fg = "#2aa298"
+}
+
+title = {
+    fg = "#2aa298",
+    bold = true
+}
+
+tbl_col = {
+    fg = "#b28600",
+    bold = true
+}
+
+tbl_cell = {
+    fg = "#9fabad"
+}
+
+
+# ────────────────────────────────────────────────────────────
+# Notifications
+# ────────────────────────────────────────────────────────────
+
+[notify]
+
+title_info = {
+    fg = "#2aa298",
+    bold = true
+}
+
+title_warn = {
+    fg = "#b28600",
+    bold = true
+}
+
+title_error = {
+    fg = "#dc312e",
+    bold = true
+}
+
+
+# ────────────────────────────────────────────────────────────
+# Pick
+# ────────────────────────────────────────────────────────────
+
+[pick]
+
+border = {
+    fg = "#2aa298"
+}
+
+active = {
+    fg = "#00141a",
+    bg = "#2aa298",
+    bold = true
+}
+
+inactive = {
+    fg = "#9fabad"
+}
+
+
+# ────────────────────────────────────────────────────────────
+# Input
+# ────────────────────────────────────────────────────────────
+
+[input]
+
+border = {
+    fg = "#2aa298"
+}
+
+title = {
+    fg = "#2aa298",
+    bold = true
+}
+
+value = {
+    fg = "#adb8b8"
+}
+
+selected = {
+    fg = "#00141a",
+    bg = "#2aa298",
+    bold = true
+}
+
+
+# ────────────────────────────────────────────────────────────
+# Completion
+# ────────────────────────────────────────────────────────────
+
+[cmp]
+
+border = {
+    fg = "#2aa298"
+}
+
+active = {
+    fg = "#00141a",
+    bg = "#2aa298",
+    bold = true
+}
+
+inactive = {
+    fg = "#9fabad"
+}
+
+
+# ────────────────────────────────────────────────────────────
+# Tasks
+# ────────────────────────────────────────────────────────────
+
+[tasks]
+
+border = {
+    fg = "#2aa298"
+}
+
+title = {
+    fg = "#2aa298",
+    bold = true
+}
+
+hovered = {
+    fg = "#00141a",
+    bg = "#073541"
+}
+
+
+# ────────────────────────────────────────────────────────────
+# Help
+# ────────────────────────────────────────────────────────────
+
+[help]
+
+on = {
+    fg = "#859900"
+}
+
+run = {
+    fg = "#2aa298"
+}
+
+desc = {
+    fg = "#9fabad"
+}
+
+hovered = {
+    fg = "#00141a",
+    bg = "#2aa298"
+}
+
+footer = {
+    fg = "#647a82"
+}
+
+
+# ────────────────────────────────────────────────────────────
+# File types
+# ────────────────────────────────────────────────────────────
+
+[filetype]
+
+rules = [
+
+    # Directories
+    { url = "*/", fg = "#b28600", bold = true },
+
+    # Symlinks
+    { url = "*", is = "link", fg = "#6d72c5" },
+
+    # Broken symlinks
+    { url = "*", is = "orphan", fg = "#dc312e", bold = true },
+
+    # Executables
+    { url = "*", is = "exec", fg = "#859900", bold = true },
+
+    # Images
+    { mime = "image/*", fg = "#d33682" },
+
+    # Video
+    { mime = "video/*", fg = "#6d72c5" },
+
+    # Audio
+    { mime = "audio/*", fg = "#6d72c5" },
+
+    # Archives
+    { mime = "application/zip", fg = "#ca4c16" },
+    { mime = "application/gzip", fg = "#ca4c16" },
+    { mime = "application/x-gzip", fg = "#ca4c16" },
+    { mime = "application/x-tar", fg = "#ca4c16" },
+    { mime = "application/x-bzip2", fg = "#ca4c16" },
+    { mime = "application/x-xz", fg = "#ca4c16" },
+    { mime = "application/x-7z-compressed", fg = "#ca4c16" },
+    { mime = "application/x-rar", fg = "#ca4c16" },
+
+    # Documents / text
+    { mime = "text/*", fg = "#9fabad" },
+
+    # Empty
+    { mime = "inode/empty", fg = "#647a82" },
+
+    # Default
+    { url = "*", fg = "#9fabad" }
+]

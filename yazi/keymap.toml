@@ -2,6 +2,7 @@
   prepend_keymap = [
   # Jump to Home directory using `g` then `h`
   { on = [ "g", "r" ], run = "cd ~/repos", desc = "Go repos" },
+  { on = [ "g", "s" ], run = "cd ~/repos/homelab/homeypro", desc = "Go HomeyScripts" },
   { on = [ "g", "n" ], run = "cd ~/.config/nvim", desc = "Go Neovim config" },
 ]
 

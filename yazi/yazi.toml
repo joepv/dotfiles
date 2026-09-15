@@ -1,13 +1,13 @@
 [opener]
 nvim = [
-  { run = 'nvim "%s"', block = true, for = "unix", desc = "Neovim" }
+  { run = 'nvim "$@"', block = true }
 ]
 
 vscode = [
-  { run = 'code wait "%s"', block = true, for = "unix", desc = "VS Code" }
+  { run = 'code --wait "$@"', block = true }
 ]
 
 [open]
 rules = [
-  { mime = "text/*", use = ["nvim", "vscode", "reveal", "exif"] }
+  { mime = "text/*", use = ["nvim", "vscode", "reveal", "exif"] },
 ]
